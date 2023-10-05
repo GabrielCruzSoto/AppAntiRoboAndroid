@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ACTIVITY_ERROR_TITLE">Anti-Robo</string>
+    <string name="ACTIVITY_ERROR_SUBTITLE">Error</string>
+    <string name="ACTIVITY_ERROR_BTN_RETURN">volver</string>
+</resources>

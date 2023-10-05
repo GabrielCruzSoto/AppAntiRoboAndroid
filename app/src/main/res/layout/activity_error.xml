@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ErrorActivity">
+
+    <TextView
+        android:id="@+id/ActivityErrorTitle"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/ACTIVITY_ERROR_TITLE"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ActivityErrorBtnReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/ACTIVITY_ERROR_BTN_RETURN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityErrorSubTitle" />
+
+    <TextView
+        android:id="@+id/ActivityErrorSubTitle"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/ACTIVITY_ERROR_SUBTITLE"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ActivityErrorBtnReturn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityErrorTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

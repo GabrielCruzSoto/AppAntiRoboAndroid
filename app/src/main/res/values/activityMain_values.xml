@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ACTIVITY_MAIN_TITLE">AntiRobo2</string>
+    <string name="ACTIVITY_MAIN_BTN_LOGIN">Sign In</string>
+</resources>

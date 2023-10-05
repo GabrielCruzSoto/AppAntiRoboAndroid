@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AppAntiRoboAndroid</string>
+    <string name="default_web_client_id">338103638069-sdidrhbbr7ldjun07mkjdlba4eo29m95.apps.googleusercontent.com</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="config_header">Cuenta Principal</string>
+    <string name="config_body">Configuraciones</string>
+
 </resources>
