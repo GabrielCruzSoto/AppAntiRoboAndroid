@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AppAntiRoboAndroid</string>
-    <string name="default_web_client_id">338103638069-sdidrhbbr7ldjun07mkjdlba4eo29m95.apps.googleusercontent.com</string>
+    <string name="default_web_client_id">338103638069-tukph895vtobt5nrrpn5ogljjv0qdn64.apps.googleusercontent.com</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="apikey">AIzaSyAZqYNWHaC1wUYCEU7wAf751sxsyFoOTrA</string>
 
     <!-- Preference Titles -->
     <string name="config_header">Cuenta Principal</string>

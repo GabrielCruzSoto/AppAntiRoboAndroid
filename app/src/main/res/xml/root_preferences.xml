@@ -2,20 +2,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/SETTINGS_ACTIVITY_TITLE">
-        <EditTextPreference app:key="email_main" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_EMAIL_ACCOUNT" app:useSimpleSummaryProvider="true" />
-        <EditTextPreference app:key="name_account" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_NAME_ACCOUNT" app:useSimpleSummaryProvider="true" />
+        <EditTextPreference app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_EMAIL_ACCOUNT" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_EMAIL_ACCOUNT" app:useSimpleSummaryProvider="true" />
+        <EditTextPreference app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_NAME_ACCOUNT" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_NAME_ACCOUNT" app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/config_body">
-        <EditTextPreference app:key="email_seconday" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_NAME_ACCOUNT" app:useSimpleSummaryProvider="true" />
-        <SwitchPreferenceCompat app:key="activate_tracker_gps" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_TRACKER_GPS" />
-        <SwitchPreferenceCompat app:key="activate_camera_front" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_ACTIVATE_CAMERA_FRONT" />
+        <EditTextPreference app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_EMAIL_SECONDARY" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_EMAIL_SECONDARY" app:useSimpleSummaryProvider="true"/>
+        <SwitchPreferenceCompat app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_ACTIVATE_TRACKER_BACKGROUND" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_ACTIVATE_TRACKER_BACKGROUND" app:defaultValue="0" />
+        <SwitchPreferenceCompat app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_TRACKER_GPS" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_TRACKER_GPS"  app:defaultValue="0"/>
+        <SwitchPreferenceCompat app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_TRACKER_GPS_BACKGROUND" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_TRACKER_GPS_BACKGROUND"  app:defaultValue="0"/>
+        <!--<SwitchPreferenceCompat app:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_ACTIVATE_CAMERA_FRONT" app:title="@string/SETTINGS_ACTIVITY_TXT_FIELD_ACTIVATE_CAMERA_FRONT" app:defaultValue="0" />-->
+
         <ListPreference
             android:defaultValue="1"
-            android:entries="@array/list_min_entries"
-            android:entryValues="@array/list_min_values"
-            android:key="list_iterator_min"
-            android:title="Iteracion de Envio" />>
+            android:entries="@array/LIST_MINUTES_ENTRIES"
+            android:entryValues="@array/LIST_MINUTES_VALUES"
+            android:key="@string/SETTINGS_ACTIVITY_KEY_FIELD_TIME_SEND"
+            android:title="Iteracion de Envio"
+            app:defaultValue="1"/>
 
     </PreferenceCategory>
 

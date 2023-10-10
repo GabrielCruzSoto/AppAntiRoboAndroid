@@ -40,6 +40,13 @@ android {
 
 dependencies {
 
+    val fragment_version = "1.5.5"
+
+    // Java language implementation
+    implementation("androidx.fragment:fragment:$fragment_version")
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+    debugImplementation("androidx.fragment:fragment-testing:$fragment_version")
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -48,6 +55,9 @@ dependencies {
     implementation ("com.google.api-client:google-api-client:2.2.0")
     implementation ("com.google.oauth-client:google-oauth-client-jetty:1.23.0")
     implementation ("com.google.apis:google-api-services-gmail:v1-rev83-1.23.0")
+
+    implementation ("com.google.auth:google-auth-library-oauth2-http:1.11.0")
+    implementation ("javax.mail:mail:1.4.7")
 
     implementation ("com.j256.ormlite:ormlite-android:5.1")
     implementation ("com.j256.ormlite:ormlite-core:5.1")

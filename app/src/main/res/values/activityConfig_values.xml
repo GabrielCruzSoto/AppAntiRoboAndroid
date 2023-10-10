@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="SETTINGS_ACTIVITY_TITLE">Configuraciones</string>
+    <string name="SETTINGS_ACTIVITY_TITLE">Cuenta</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_EMAIL_ACCOUNT">Correo Principal</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_NAME_ACCOUNT">Nombre</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_EMAIL_SECONDARY">Email Rastreo</string>
+    <string name="SETTINGS_ACTIVITY_TXT_FIELD_ACTIVATE_TRACKER_BACKGROUND">Seguimiento en segundo Plano</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_TRACKER_GPS">Activar GPS</string>
+    <string name="SETTINGS_ACTIVITY_TXT_FIELD_TRACKER_GPS_BACKGROUND">Activar GPS (Segundo Plano)</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_ACTIVATE_CAMERA_FRONT">Activar Camara Frontal</string>
     <string name="SETTINGS_ACTIVITY_TXT_FIELD_TIME_SEND">Intervalo de tiempo que envia el mensaje (Minutos)</string>
 
@@ -12,7 +14,9 @@
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_EMAIL_ACCOUNT">key_field_email_account</string>
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_NAME_ACCOUNT">key_field_name_account</string>
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_EMAIL_SECONDARY">key_field_email_secondary</string>
+    <string name="SETTINGS_ACTIVITY_KEY_FIELD_ACTIVATE_TRACKER_BACKGROUND">key_field_tracker_background</string>
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_TRACKER_GPS">key_field_tracker_gps</string>
+    <string name="SETTINGS_ACTIVITY_KEY_FIELD_TRACKER_GPS_BACKGROUND">key_field_tracker_gps_background</string>
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_ACTIVATE_CAMERA_FRONT">key_field_activate_camera_front</string>
     <string name="SETTINGS_ACTIVITY_KEY_FIELD_TIME_SEND">key_field_time_send</string>
 
