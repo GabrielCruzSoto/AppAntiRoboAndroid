@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.accounts.AccountManagerFuture;
 import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.Activity;
@@ -19,16 +18,15 @@ import android.widget.Toast;
 
 import com.gcs.appantiroboandroid.ConstantsUtils;
 import com.gcs.appantiroboandroid.R;
-import com.gcs.appantiroboandroid.config.GoogleAPIUtils;
 import com.gcs.appantiroboandroid.model.AttributesModel;
 import com.gcs.appantiroboandroid.repository.AttributesRepository;
+import com.gcs.appantiroboandroid.utils.GoogleLoginUtils;
 import com.gcs.appantiroboandroid.utils.OnErrorUtils;
 import com.gcs.appantiroboandroid.utils.OnTokenAcquired;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 import com.google.api.services.gmail.GmailScopes;
 
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SignInButton btnSignIn;
     private AttributesRepository attributesRepository;
-    private GoogleAPIUtils googleAPIUtils;
+    private GoogleLoginUtils googleAPIUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate| Values are assigned to the attributes of class MainActivity");
         this.attributesRepository = new AttributesRepository(this);
         this.btnSignIn = findViewById(R.id.btnSignIn);
-        this.googleAPIUtils = new GoogleAPIUtils();
+        this.googleAPIUtils = new GoogleLoginUtils();
 
         Log.d(TAG, "onCreate| invoke method MainActivity.validateIsExistSignInGoogleAPI");
         validateIsExistSignInGoogleAPI();

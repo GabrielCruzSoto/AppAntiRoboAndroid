@@ -21,6 +21,9 @@ public class ConstantsUtils {
     public static final String STATUS_ON =  "1";
     public static final String STATUS_OFF =  "0";
 
+    public static final String KEY_AUTH_TOKEN = "KEY_AUTH_TOKEN";
+    public static final String TOKEN_EXPIRED = "TOKEN_EXPIRED";
+
 
 
 }
