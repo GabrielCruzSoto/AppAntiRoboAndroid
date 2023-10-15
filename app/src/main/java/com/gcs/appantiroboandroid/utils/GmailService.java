@@ -1,6 +1,6 @@
 package com.gcs.appantiroboandroid.utils;
 
-import android.os.Build;
+
 import android.util.Log;
 
 import com.gcs.appantiroboandroid.ConstantsUtils;
@@ -14,10 +14,10 @@ import com.google.api.services.gmail.model.Message;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.AccessToken;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Properties;
@@ -27,9 +27,12 @@ import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+
+
 public class GmailService{
 
-
+    private static final Gson gson = new Gson();
 
     private static final String TAG = "APP_ANTIROBO - GmailService";
     private String token;
@@ -62,49 +65,51 @@ public class GmailService{
     }
 
     public void sendMessage(String subject, String bodyMessage)  {
-        try{
+            Thread thread = new Thread(() -> {
+                try{
+                Log.e(TAG, "sendMessage| token" + token);
+                Log.e(TAG, "sendMessage| expiredToken" + expiredToken);
+                GoogleCredentials credentials =  GoogleCredentials.create(new AccessToken(token,new Date(expiredToken)));
+
+                HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials);
 
 
-            Log.e(TAG, "sendMessage| token" + token);
-            Log.e(TAG, "sendMessage| expiredToken" + expiredToken);
-            GoogleCredentials credentials =  GoogleCredentials.create(new AccessToken(token,new Date(expiredToken)));
+                Gmail.Builder gmailBuilder = new Gmail.Builder(new NetHttpTransport(),
+                        GsonFactory.getDefaultInstance(),
+                        requestInitializer).setApplicationName("AppAntiRoboAndroid");
 
-            HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials);
+                Gmail gmail = gmailBuilder.build();
+                Log.i(TAG, "sendMessage| Preparando mensaje");
+                Properties props = new Properties();
+                Session session = Session.getDefaultInstance(props);
+                MimeMessage email = new MimeMessage(session);
+                email.setFrom(new InternetAddress(emailMain));
+                email.addRecipient( javax.mail.Message.RecipientType.TO, new InternetAddress(emailSecondary));
+                email.setSubject(subject);
+                email.setText(bodyMessage);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                email.writeTo(baos);
+                byte[] rawMessageBytes = baos.toByteArray();
+                String encodedEmail = Base64.getEncoder().encodeToString(rawMessageBytes);
+                Message message = new Message();
+                message.setRaw(encodedEmail);
+                Log.i(TAG, "sendMessage| Enviando mensaje");
+                gmail.users().messages().send("me", message).execute();
+            } catch (IOException | AddressException e) {
+                Log.e(TAG, "sendMessage| [AddressException || IOException] -> Error: e => " + gson.toJson(e));
+                Log.e(TAG, "sendMessage| [AddressException || IOException] -> Error: getMessage => " + e.getMessage());
+                //Log.e(TAG, "sendMessage| AddressException| IOException -> Error: getLocalizedMessage => " + e.getLocalizedMessage());
+                Log.e(TAG, "sendMessage| [AddressException || IOException] -> Error: getStackTrace => " + gson.toJson(e.getStackTrace()));
 
+            } catch (
+            MessagingException e) {
+                Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getMessage());
+                Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getLocalizedMessage());
+                Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getMessage());
+            }
+            });
+        thread.start();
 
-            Gmail.Builder gmailBuilder = new Gmail.Builder(new NetHttpTransport(),
-                    GsonFactory.getDefaultInstance(),
-                    requestInitializer).setApplicationName("AppAntiRoboAndroid");
-
-            Gmail gmail = gmailBuilder.build();
-            Log.i(TAG, "sendMessage| Preparando mensaje");
-            Properties props = new Properties();
-            Session session = Session.getDefaultInstance(props);
-            MimeMessage email = new MimeMessage(session);
-            email.setFrom(new InternetAddress(emailSecondary));
-            email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(emailMain));
-            email.setSubject(subject);
-            email.setText(bodyMessage);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            email.writeTo(baos);
-            byte[] rawMessageBytes = baos.toByteArray();
-            String encodedEmail = Base64.getEncoder().encodeToString(rawMessageBytes);
-            Message message = new Message();
-            message.setRaw(encodedEmail);
-            Log.i(TAG, "sendMessage| Enviando mensaje");
-            gmail.users().messages().send("me", message).execute();
-        }catch(IOException | AddressException e) {
-            Log.e(TAG, "sendMessage| AddressException| IOException -> Error: e => " + e);
-            Log.e(TAG, "sendMessage| AddressException| IOException -> Error: getMessage => " + e.getMessage());
-            //Log.e(TAG, "sendMessage| AddressException| IOException -> Error: getLocalizedMessage => " + e.getLocalizedMessage());
-            Log.e(TAG, "sendMessage| AddressException| IOException -> Error: getMessage => " + e.getMessage());
-            Log.e(TAG, "sendMessage| AddressException| IOException -> Error: getStackTrace => " + Arrays.toString(e.getStackTrace()));
-
-        } catch (MessagingException e) {
-            Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getMessage());
-            Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getLocalizedMessage());
-            Log.e(TAG, "sendMessage| RuntimeException -> Error: " + e.getMessage());
-        }
 
     }
 }
